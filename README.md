@@ -1,20 +1,27 @@
-# Captain ROScan
+<div align="center">
 
-**ROSCAN — Remote Optical & Spectral Claim Adjudication Node**
+# ROScan
 
-A phone insurance claim checker that works from a single photo. Upload a picture of a damaged phone and Captain ROScan grades the damage, checks the photo is genuine, looks up what the repair should cost, and gives a clear claim decision — approve repair, approve replacement, route it to a free OEM warranty programme, or reject it — with the money worked out for each case.
+**Remote Optical & Spectral Claim Adjudication Node**
 
-[![Python](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/downloads/)
-[![Streamlit](https://img.shields.io/badge/Built%20with-Streamlit-FF4B4B.svg)](https://streamlit.io)
-[![LangGraph](https://img.shields.io/badge/Agent-LangGraph-orange.svg)](https://github.com/langchain-ai/langgraph)
+*One photo in — a full claim decision out.*
 
-**Live demo:** https://roscan.streamlit.app
+![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?style=flat-square&logo=python&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)
+![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=flat-square&logo=opencv&logoColor=white)
+![LangGraph](https://img.shields.io/badge/LangGraph-Agent-F97316?style=flat-square)
+
+### [▶ Live Demo](https://roscan.streamlit.app)
+
+</div>
 
 ---
 
-## Why this exists
+## What it does
 
-Device insurance claims are slow because every claim needs a human to look at the phone, judge the damage, and check prices before anything is approved. Captain ROScan does that first pass automatically:
+ROScan is a phone insurance claim checker that works from a single photo. Upload a picture of a damaged phone and it grades the damage, checks the photo is genuine, looks up what the repair should cost, and gives a clear claim decision — approve repair, approve replacement, route it to a free OEM warranty programme, or reject it — with the money worked out for each case.
+
+It answers the five questions every claim starts with:
 
 - Is the photo real, or a picture of another screen (a common fraud)?
 - Is the display a genuine OEM panel or a cheap replacement?
@@ -68,9 +75,9 @@ A LangGraph state machine runs the checks, then pulls prices from the economics 
 
 Every verdict comes with written reasoning, the customer deductible, and the insurer's liability in ₹.
 
-### Economics registry (modules/mcp_tools.py)
+### Economics registry
 
-A built-in price registry for **12 phone brands**, with OEM display + labour prices, resale values and scrap values in INR (based on Cashify Q3-2026 figures and OEM India service rate cards), plus per-model deductibles and recall eligibility. Models without exact figures fall back to price tiers (budget / mid-range / premium / ultra-premium).
+`modules/mcp_tools.py` holds a built-in price registry for **12 phone brands** — OEM display + labour prices, resale values and scrap values in INR (based on Cashify Q3-2026 figures and OEM India service rate cards), plus per-model deductibles and recall eligibility. Models without exact figures fall back to price tiers (budget / mid-range / premium / ultra-premium).
 
 ## App features
 
@@ -80,7 +87,7 @@ A built-in price registry for **12 phone brands**, with OEM display + labour pri
 - A downloadable claim report for every inspection
 - Capture guidance prompts in English and Hinglish
 
-## Quickstart
+## Quick start
 
 ```bash
 git clone https://github.com/RonakAgarwal18/ROSCAN-Multimodal-Diagnostic-Agent.git
@@ -89,15 +96,15 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-Then open http://localhost:8501, choose a brand and model, and load one of the sample inspections to see a full decision.
+Open http://localhost:8501, choose a brand and model, and load one of the sample inspections to see a full decision.
 
-## Run the tests
+## Tests
 
 ```bash
 python test_pipeline.py
 ```
 
-This checks the imports, verifies the price registry for all 12 brands, and runs the vision + agent pipeline end to end.
+Checks the imports, verifies the price registry for all 12 brands, and runs the vision + agent pipeline end to end.
 
 ## Project structure
 
@@ -118,10 +125,14 @@ requirements.txt
 
 Python · Streamlit · OpenCV · NumPy · SciPy · LangGraph · Pydantic · Matplotlib
 
-## Note on the data
+## A note on the data
 
 The price registry ships inside the repo so the demo runs anywhere with no setup. Figures are indicative (Cashify and OEM rate-card based, Q3 2026) — plug in a live pricing source before using this for real claims.
 
 ---
 
+<div align="center">
+
 Built by [Ronak Agarwal](https://github.com/RonakAgarwal18)
+
+</div>
